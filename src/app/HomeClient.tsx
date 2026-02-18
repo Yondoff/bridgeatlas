@@ -15,7 +15,7 @@ type FeaturedBridge = {
 };
 
 export default function HomeClient(
-  props: { locale?: "en" | "fr" | "de"; featured?: FeaturedBridge[] } = {}
+  props: { locale?: "en" | "fr" | "de" | "es" | "ru" | "ja"; featured?: FeaturedBridge[] } = {}
 ) {
   const locale = props.locale ?? "en";
   const isFR = locale === "fr";
@@ -72,30 +72,105 @@ export default function HomeClient(
           linkCompare: "Alle Brücken",
           tip: "Tipp: starte mit einer Brücke und folge dann Quellen und Karte.",
         }
-      : {
-          title: "The engineering atlas of the world’s greatest bridges.",
-          subtitle:
-            "Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.",
-          ctaMap: "Explore the world map",
-          ctaBridges: "Browse bridges",
-          ctaRankings: "Rankings",
-          ctaLearn: "Learn",
-          featured: "Featured bridges",
-          featuredHint: "Click one. Read the story. Keep going.",
-          boxTitle: "What you’ll get",
-          bullets: [
-            "• Bridge profiles: specs, sources, and design context",
-            "• Rankings built around real search demand",
-            "• Learn pages that explain how bridges actually work",
-          ],
-          keepGoing: "Keep going",
-          keepGoingDesc:
-            "If you don’t know what to read next: open a ranking, then a Learn page.",
-          linkLongest: "Ranking: longest bridges",
-          linkSuspension: "Learn: how suspension bridges work",
-          linkCompare: "Browse all bridges",
-          tip: "Tip: start with a bridge, then follow the sources and the map.",
-        };
+      : locale === "es"
+        ? {
+            title: "El atlas de ingeniería de los mejores puentes del mundo.",
+            subtitle:
+              "Perfiles con datos, fuentes y explicaciones claras — más rankings y lecciones.",
+            ctaMap: "Abrir el mapa",
+            ctaBridges: "Ver puentes",
+            ctaRankings: "Rankings",
+            ctaLearn: "Aprender",
+            featured: "Destacados",
+            featuredHint: "Haz clic en uno. Lee. Sigue. ",
+            boxTitle: "Qué obtienes",
+            bullets: [
+              "• Perfiles: datos, fuentes y contexto",
+              "• Rankings según búsquedas reales",
+              "• Learn: cómo funcionan los puentes",
+            ],
+            keepGoing: "Sigue",
+            keepGoingDesc:
+              "Si no sabes qué leer: abre un ranking y luego una página Learn.",
+            linkLongest: "Ranking: puentes más largos",
+            linkSuspension: "Learn: cómo funcionan los puentes colgantes",
+            linkCompare: "Ver todos los puentes",
+            tip: "Consejo: empieza con un puente y sigue con las fuentes y el mapa.",
+          }
+        : locale === "ru"
+          ? {
+              title: "Инженерный атлас великих мостов мира.",
+              subtitle:
+                "Профили с данными, источниками и объяснениями — плюс рейтинги и уроки.",
+              ctaMap: "Открыть карту",
+              ctaBridges: "Мосты",
+              ctaRankings: "Рейтинги",
+              ctaLearn: "Обучение",
+              featured: "Избранные",
+              featuredHint: "Открой один. Прочитай. Дальше. ",
+              boxTitle: "Что внутри",
+              bullets: [
+                "• Профили: данные, источники, контекст",
+                "• Рейтинги по реальному спросу",
+                "• Learn: как работают мосты",
+              ],
+              keepGoing: "Дальше",
+              keepGoingDesc:
+                "Не знаете, что читать: сначала рейтинг, затем страницу Learn.",
+              linkLongest: "Рейтинг: самые длинные мосты",
+              linkSuspension: "Learn: как работают висячие мосты",
+              linkCompare: "Все мосты",
+              tip: "Совет: начните с моста и переходите по источникам и карте.",
+            }
+          : locale === "ja"
+            ? {
+                title: "世界の偉大な橋の工学アトラス。",
+                subtitle:
+                  "データ・出典・わかりやすい解説つきのプロフィール。ランキングと学習ページも。",
+                ctaMap: "地図を見る",
+                ctaBridges: "橋を見る",
+                ctaRankings: "ランキング",
+                ctaLearn: "学ぶ",
+                featured: "注目の橋",
+                featuredHint: "ひとつ開く。読む。次へ。",
+                boxTitle: "できること",
+                bullets: [
+                  "• プロフィール：データ、出典、背景",
+                  "• 検索需要に沿ったランキング",
+                  "• Learn：橋の仕組みを解説",
+                ],
+                keepGoing: "次へ",
+                keepGoingDesc:
+                  "迷ったら：ランキング→Learnの順で読むのがおすすめ。",
+                linkLongest: "ランキング：世界の長い橋",
+                linkSuspension: "Learn：吊り橋の仕組み",
+                linkCompare: "橋を一覧で見る",
+                tip: "ヒント：橋ページから出典と地図を辿ってみて。",
+              }
+            : {
+                title: "The engineering atlas of the world’s greatest bridges.",
+                subtitle:
+                  "Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.",
+                ctaMap: "Explore the world map",
+                ctaBridges: "Browse bridges",
+                ctaRankings: "Rankings",
+                ctaLearn: "Learn",
+                featured: "Featured bridges",
+                featuredHint: "Click one. Read the story. Keep going.",
+                boxTitle: "What you’ll get",
+                bullets: [
+                  "• Bridge profiles: specs, sources, and design context",
+                  "• Rankings built around real search demand",
+                  "• Learn pages that explain how bridges actually work",
+                ],
+                keepGoing: "Keep going",
+                keepGoingDesc:
+                  "If you don’t know what to read next: open a ranking, then a Learn page.",
+                linkLongest: "Ranking: longest bridges",
+                linkSuspension: "Learn: how suspension bridges work",
+                linkCompare: "Browse all bridges",
+                tip: "Tip: start with a bridge, then follow the sources and the map.",
+              };
 
   return (
     <div className="min-h-dvh">
