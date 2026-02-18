@@ -125,7 +125,7 @@ const photosBySlug: Record<string, Bridge["photo"]> = {
     caption: "Hangzhou Bay Bridge",
     credit: "Wikimedia Commons",
     sourceUrl:
-      "https://commons.wikimedia.org/wiki/File:%25E6%259D%25AD%25E5%25B7%259E%25E6%25B9%25BE%25E5%25A4%25A7%25E6%25A1%25A5%25E4%25B8%258A%25E7%259A%2584%25E9%25AB%2598%25E9%2580%259F%25E5%25B2%259B%25E5%25BC%258F%25E6%259C%258D%25E5%258A%25A1%25E5%25E5%258C%25BA.jpeg",
+      "https://commons.wikimedia.org/wiki/File:%25E6%259D%25AD%25E5%25B7%259E%25E6%25B9%25BE%25E5%25A4%25A7%25E6%25A1%25A5%25E4%25B8%258A%25E7%259A%2584%25E9%25AB%2598%25E9%2580%259F%25E5%25B2%259B%25E5%25BC%258F%25E6%259C%258D%25E5%258A%25A1%25E5%258C%25BA.jpeg",
   },
   "charles-bridge": {
     url: "https://upload.wikimedia.org/wikipedia/commons/2/22/Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg",
@@ -1694,6 +1694,11 @@ const rawBridges: Bridge[] = [
     ],
   },
 ];
+
+export const bridges: Bridge[] = rawBridges.map((b) => ({
+  ...b,
+  photo: b.photo ?? photosBySlug[b.slug],
+}));
 
 export function getBridge(slug: string): Bridge | undefined {
   return bridges.find((b) => b.slug === slug);
