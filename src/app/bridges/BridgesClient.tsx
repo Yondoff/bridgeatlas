@@ -128,7 +128,7 @@ export default function BridgesClient(props: { bridges: Bridge[] }) {
               className="group rounded-[36px] bg-white/60 border border-black/10 shadow-paper hover:bg-white/70 transition overflow-hidden"
             >
               <div className="relative">
-                {b.photo?.url ? (
+                {previewMode === "photos" && b.photo?.url ? (
                   <div className="relative h-[220px] bg-paper/70">
                     <Image
                       src={b.photo.url}
