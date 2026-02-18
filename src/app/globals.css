@@ -40,8 +40,16 @@ body {
     0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
-/* Tint the OpenStreetMap raster tiles into our warm paper/orange palette */
+/* Map styling
+   Default: standard OpenStreetMap colors.
+   If you ever want the old “aged paper/orange” tint back, add the class
+   `bridge-mini-map--tinted` to the MapContainer and tweak the filter below. */
+
 .bridge-mini-map .leaflet-tile {
+  filter: none;
+}
+
+.bridge-mini-map--tinted .leaflet-tile {
   filter: sepia(0.75) saturate(1.35) hue-rotate(-10deg) brightness(0.98)
     contrast(1.05);
 }

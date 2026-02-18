@@ -24,7 +24,7 @@ export default function BridgeMiniMap(props: { bridge: Bridge }) {
             className="h-full w-full bridge-mini-map"
           >
             <TileLayer
-              // OpenStreetMap tiles (standard). We tint via CSS filter.
+              // OpenStreetMap tiles (standard).
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <CircleMarker
