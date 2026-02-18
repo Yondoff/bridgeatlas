@@ -2,9 +2,21 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import WelcomeMark from "@/components/WelcomeMark";
 
-export default function HomeClient(props: { locale?: "en" | "fr" } = {}) {
+type FeaturedBridge = {
+  slug: string;
+  name: string;
+  country: string;
+  city?: string;
+  tagline: string;
+  photo?: { url: string; caption?: string; credit?: string; sourceUrl?: string };
+};
+
+export default function HomeClient(
+  props: { locale?: "en" | "fr"; featured?: FeaturedBridge[] } = {}
+) {
   const locale = props.locale ?? "en";
   const isFR = locale === "fr";
   const base = isFR ? "/fr" : "";
@@ -18,13 +30,21 @@ export default function HomeClient(props: { locale?: "en" | "fr" } = {}) {
         ctaBridges: "Voir les ponts",
         ctaRankings: "Classements",
         ctaLearn: "Apprendre",
+        featured: "Ponts à voir",
+        featuredHint: "Clique un pont. Lis l’histoire. Enchaîne.",
         boxTitle: "Ce que tu vas avoir",
         bullets: [
           "• Fiches ponts : specs, sources, contexte de design",
           "• Classements construits sur la demande Google",
           "• Pages Learn pour comprendre comment ça marche",
         ],
-        tip: "Astuce : commence par la carte, puis ouvre une fiche pont.",
+        keepGoing: "Continue",
+        keepGoingDesc:
+          "Si tu ne sais pas quoi lire : commence par un classement, puis une page Learn.",
+        linkLongest: "Classement : les ponts les plus longs",
+        linkSuspension: "Learn : comment marche un pont suspendu",
+        linkCompare: "Parcourir tous les ponts",
+        tip: "Astuce : commence par un pont, puis clique dans les sources et la carte.",
       }
     : {
         title: "The engineering atlas of the world’s greatest bridges.",
@@ -34,13 +54,21 @@ export default function HomeClient(props: { locale?: "en" | "fr" } = {}) {
         ctaBridges: "Browse bridges",
         ctaRankings: "Rankings",
         ctaLearn: "Learn",
+        featured: "Featured bridges",
+        featuredHint: "Click one. Read the story. Keep going.",
         boxTitle: "What you’ll get",
         bullets: [
           "• Bridge profiles: specs, sources, and design context",
           "• Rankings built around real search demand",
           "• Learn pages that explain how bridges actually work",
         ],
-        tip: "Tip: start with the map, then open a bridge profile.",
+        keepGoing: "Keep going",
+        keepGoingDesc:
+          "If you don’t know what to read next: open a ranking, then a Learn page.",
+        linkLongest: "Ranking: longest bridges",
+        linkSuspension: "Learn: how suspension bridges work",
+        linkCompare: "Browse all bridges",
+        tip: "Tip: start with a bridge, then follow the sources and the map.",
       };
 
   return (
@@ -113,6 +141,97 @@ export default function HomeClient(props: { locale?: "en" | "fr" } = {}) {
             </div>
           </div>
         </motion.div>
+
+        {props.featured?.length ? (
+          <div className="mt-10">
+            <div className="flex items-end justify-between gap-4 flex-wrap">
+              <div>
+                <div className="text-xs font-semibold text-ink/60 tracking-wide">
+                  {t.featured.toUpperCase()}
+                </div>
+                <div className="mt-2 text-sm text-ink/70">{t.featuredHint}</div>
+              </div>
+              <Link
+                href={`${base}/bridges`}
+                className="text-sm font-semibold text-accent hover:text-accentDeep transition"
+              >
+                {t.linkCompare} →
+              </Link>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {props.featured.slice(0, 6).map((b) => (
+                <Link
+                  key={b.slug}
+                  href={`${base}/bridges/${b.slug}`}
+                  className="group rounded-[28px] bg-white/60 border border-black/10 shadow-paper hover:bg-white/70 transition overflow-hidden"
+                >
+                  <div className="relative h-[160px] bg-paper/70">
+                    {b.photo?.url ? (
+                      <>
+                        <Image
+                          src={b.photo.url}
+                          alt={b.photo.caption ?? `${b.name} photo`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, 420px"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0" />
+                      </>
+                    ) : null}
+                    <div className="absolute left-4 bottom-3 right-4">
+                      <div className="text-white/95 font-extrabold leading-tight">
+                        {b.name}
+                      </div>
+                      <div className="text-[12px] text-white/80 font-semibold">
+                        {b.city ? `${b.city}, ` : ""}{b.country}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-5 py-4">
+                    <div className="text-sm text-ink/75 leading-6">
+                      <span className="font-semibold">{isFR ? "Pourquoi :" : "Why:"}</span>{" "}
+                      {b.tagline}
+                    </div>
+                    <div className="mt-3 text-xs text-ink/55 flex items-center justify-between">
+                      <span>{isFR ? "Ouvrir" : "Open"}</span>
+                      <span className="font-semibold text-accent group-hover:text-accentDeep transition">
+                        →
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-[28px] bg-paper/70 border border-black/10 p-6">
+              <div className="text-sm font-semibold">{t.keepGoing}</div>
+              <p className="mt-2 text-sm text-ink/70 max-w-2xl leading-6">
+                {t.keepGoingDesc}
+              </p>
+              <div className="mt-4 flex flex-col sm:flex-row gap-3">
+                <Link
+                  href={`${base}/rankings/longest-bridges`}
+                  className="rounded-full bg-white/70 border border-black/10 px-5 py-2.5 text-sm font-semibold text-ink hover:bg-white transition"
+                >
+                  {t.linkLongest}
+                </Link>
+                <Link
+                  href={`${base}/learn/how-suspension-bridges-work`}
+                  className="rounded-full bg-white/70 border border-black/10 px-5 py-2.5 text-sm font-semibold text-ink hover:bg-white transition"
+                >
+                  {t.linkSuspension}
+                </Link>
+                <Link
+                  href={`${base}/map`}
+                  className="rounded-full bg-accent text-white px-5 py-2.5 text-sm font-semibold hover:bg-accentDeep transition"
+                >
+                  {t.ctaMap}
+                </Link>
+              </div>
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-10 text-xs text-ink/50">{t.tip}</div>
       </main>
