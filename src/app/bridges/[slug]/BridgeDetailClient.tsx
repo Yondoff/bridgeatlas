@@ -17,11 +17,14 @@ import ShareButton from "@/components/ShareButton";
 import RecommendedReading from "@/components/RecommendedReading";
 import { usePathname } from "next/navigation";
 
+import { localizeBridge } from "@/lib/i18nBridge";
+
 export default function BridgeDetailClient(props: { bridge: Bridge }) {
-  const b = props.bridge;
   const pathname = usePathname() || "/";
   const isFR = pathname === "/fr" || pathname.startsWith("/fr/");
   const base = isFR ? "/fr" : "";
+  const b = localizeBridge(props.bridge, isFR ? "fr" : "en");
+
   const t = isFR
     ? {
         back: "← Retour",
