@@ -93,6 +93,169 @@ function mergedBreakdown(type: Bridge["type"], extras: string[] = []) {
   return [...breakdownByType[type], ...extras];
 }
 
+const photosBySlug: Record<string, Bridge["photo"]> = {
+  "tianjin-grand-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/b/b4/Beijing-Tianjin_ligne_TGV_viaduc_IMG_4433.jpg",
+    caption: "Tianjin Grand Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Beijing-Tianjin_ligne_TGV_viaduc_IMG_4433.jpg",
+  },
+  "bang-na-expressway": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/c/cf/Bangna-Bangpakong_Road.jpg",
+    caption: "Bang Na Expressway (Elevated highway bridge)",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Bangna-Bangpakong_Road.jpg",
+  },
+  "beijing-grand-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/4/4f/Gro%C3%9Fe_Br%C3%BCcke_von_Peking_en.png",
+    caption: "Beijing Grand Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Gro%25C3%259Fe_Br%25C3%25BCcke_von_Peking_en.png",
+  },
+  "manchac-swamp-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/9/96/Manchac_Bridge.jpg",
+    caption: "Manchac Swamp Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Manchac_Bridge.jpg",
+  },
+  "hangzhou-bay-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/5/54/%E6%9D%AD%E5%B7%9E%E6%B9%BE%E5%A4%A7%E6%A1%A5%E4%B8%8A%E7%9A%84%E9%AB%98%E9%80%9F%E5%B2%9B%E5%BC%8F%E6%9C%8D%E5%8A%A1%E5%8C%BA.jpeg",
+    caption: "Hangzhou Bay Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:%25E6%259D%25AD%25E5%25B7%259E%25E6%25B9%25BE%25E5%25A4%25A7%25E6%25A1%25A5%25E4%25B8%258A%25E7%259A%2584%25E9%25AB%2598%25E9%2580%259F%25E5%25B2%259B%25E5%25BC%258F%25E6%259C%258D%25E5%258A%25A1%25E5%25E5%258C%25BA.jpeg",
+  },
+  "charles-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/2/22/Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg",
+    caption: "Charles Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Prague_07-2016_view_from_Lesser_Town_Tower_of_Charles_Bridge_img3.jpg",
+  },
+  "ponte-vecchio": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg",
+    caption: "Ponte Vecchio",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Ponte_Vecchio_from_Ponte_alle_Grazie.jpg",
+  },
+  "rialto-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Rialto_2025_4.jpg",
+    caption: "Rialto Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Rialto_2025_4.jpg",
+  },
+  "firth-of-forth-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Forth_Bridge_2022.jpg",
+    caption: "Forth Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Forth_Bridge_2022.jpg",
+  },
+  "ponte-25-de-abril": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/5/51/25_De_Abril_Bridge_%28226290561%29.jpeg",
+    caption: "25 de Abril Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:25_De_Abril_Bridge_%2528226290561%2529.jpeg",
+  },
+  "vasco-da-gama-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/4/47/Vasco_da_Gama_Bridge_aerial_view.jpg",
+    caption: "Vasco da Gama Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Vasco_da_Gama_Bridge_aerial_view.jpg",
+  },
+  "confederation-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Confederation_Bridge_during_winter.jpg",
+    caption: "Confederation Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Confederation_Bridge_during_winter.jpg",
+  },
+  "howrah-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Howrah_bridge_at_night.jpg",
+    caption: "Howrah Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Howrah_bridge_at_night.jpg",
+  },
+  "chain-bridge-budapest": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Sz%C3%A9chenyi_Chain_Bridge_in_Budapest_at_night.jpg",
+    caption: "Széchenyi Chain Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Sz%25C3%25A9chenyi_Chain_Bridge_in_Budapest_at_night.jpg",
+  },
+  "pont-neuf": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/9/9e/The_western_sides_of_the_%C3%8Ele_de_la_Cit%C3%A9_and_the_Pont_Neuf%2C_14_July_2008.jpg",
+    caption: "Pont Neuf",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:The_western_sides_of_the_%25C3%258Ele_de_la_Cit%25C3%25A9_and_the_Pont_Neuf%252C_14_July_2008.jpg",
+  },
+  "pont-alexandre-iii": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Pont_Alexandre_III_depuis_pont_de_la_Concorde_Paris.jpg",
+    caption: "Pont Alexandre III",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Pont_Alexandre_III_depuis_pont_de_la_Concorde_Paris.jpg",
+  },
+  "hell-gate-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/6/6e/Hell_Gate_Bridge_%2860275p%29.jpg",
+    caption: "Hell Gate Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Hell_Gate_Bridge_%252860275p%2529.jpg",
+  },
+  "pont-du-gard": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/4/42/Pont_du_Gard_BLS.jpg",
+    caption: "Pont du Gard (aqueduct bridge)",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pont_du_Gard_BLS.jpg",
+  },
+  "viaduc-de-garabits": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/f/f3/Garabit.jpg",
+    caption: "Garabit Viaduct",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Garabit.jpg",
+  },
+  "viaducto-de-montabaur": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/9/90/Siduhe_Bridge-4.jpg",
+    caption: "Siduhe Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Siduhe_Bridge-4.jpg",
+  },
+  "helix-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/5/50/Double-Helix-Bridge.jpg",
+    caption: "Helix Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Double-Helix-Bridge.jpg",
+  },
+  "russky-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/6/65/Russky_Bridge_%28October_2024%29-0_2.jpg",
+    caption: "Russky Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Russky_Bridge_%2528October_2024%2529-0_2.jpg",
+  },
+  "stari-most": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Mostar_Old_Town_Panorama_2007.jpg",
+    caption: "Stari Most",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Mostar_Old_Town_Panorama_2007.jpg",
+  },
+  "great-belt-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/7/77/Storeb%C3%A6ltsbroen_from_Sj%C3%A6lland.jpg",
+    caption: "Great Belt Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Storeb%25C3%25A6ltsbroen_from_Sj%25C3%25A6lland.jpg",
+  },
+};
+
 const rawBridges: Bridge[] = [
   // -------------------------
   // 10 largest / longest bridges (curated list)
