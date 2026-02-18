@@ -14,7 +14,6 @@ import BridgeMiniMap from "@/components/BridgeMiniMap";
 import CountryBackdrop from "@/components/CountryBackdrop";
 import CountryLabelRight from "@/components/CountryLabelRight";
 import ShareButton from "@/components/ShareButton";
-import { SITE_URL } from "@/lib/site";
 
 export default function BridgeDetailClient(props: { bridge: Bridge }) {
   const b = props.bridge;
@@ -32,7 +31,7 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
             ← Back
           </Link>
 
-          <ShareButton title={b.name} url={`${SITE_URL}/bridges/${b.slug}`} />
+          <ShareButton title={b.name} path={`/bridges/${b.slug}`} />
         </div>
 
         <div className="relative">

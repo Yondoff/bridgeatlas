@@ -75,7 +75,7 @@ export default async function LearnPage({
             >
               All explainers
             </Link>
-            <ShareButton title={page.title} url={`${SITE_URL}/learn/${page.slug}`} />
+            <ShareButton title={page.title} url={`${SITE_URL}/learn/${page.slug}`} path={`/learn/${page.slug}`} />
           </div>
         </div>
 

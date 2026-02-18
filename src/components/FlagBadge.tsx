@@ -19,7 +19,7 @@ function FlagTile(props: { children: React.ReactNode; code: string }) {
   const name = countryNameFromCode(props.code);
   return (
     <div
-      className="h-7 w-10 sm:h-8 sm:w-12 rounded-[10px] overflow-hidden border border-black/10 bg-white/60 shadow-sm"
+      className="h-7 w-10 sm:h-8 sm:w-12 rounded-[12px] overflow-hidden border border-black/10 bg-white/60 shadow-sm"
       aria-label={name}
       title={name}
     >
@@ -104,11 +104,29 @@ function FlagSVG(props: { code: string }) {
         </svg>
       );
     case "AU":
+      // simplified but recognizable Australian flag
       return (
         <svg viewBox="0 0 60 30" className="h-full w-full">
           <rect width="60" height="30" fill="#012169" />
-          <circle cx="45" cy="15" r="6" fill="#fff" opacity="0.9" />
-          <circle cx="45" cy="15" r="3" fill="#fff" />
+
+          {/* canton: simplified Union Jack */}
+          <g>
+            <rect width="30" height="15" x="0" y="0" fill="#012169" />
+            <path d="M0,0 30,15 M30,0 0,15" stroke="#FFF" strokeWidth="3" />
+            <path d="M0,0 30,15 M30,0 0,15" stroke="#C8102E" strokeWidth="1.6" />
+            <path d="M15 0v15 M0 7.5h30" stroke="#FFF" strokeWidth="5" />
+            <path d="M15 0v15 M0 7.5h30" stroke="#C8102E" strokeWidth="3" />
+          </g>
+
+          {/* stars (very simplified dots) */}
+          <circle cx="45" cy="8" r="1.6" fill="#fff" opacity="0.95" />
+          <circle cx="49" cy="13" r="1.3" fill="#fff" opacity="0.95" />
+          <circle cx="43" cy="16" r="1.3" fill="#fff" opacity="0.95" />
+          <circle cx="50" cy="20" r="1.3" fill="#fff" opacity="0.95" />
+          <circle cx="45" cy="23" r="1.3" fill="#fff" opacity="0.95" />
+
+          {/* Commonwealth Star */}
+          <circle cx="14" cy="22" r="2" fill="#fff" opacity="0.95" />
         </svg>
       );
     case "PT":

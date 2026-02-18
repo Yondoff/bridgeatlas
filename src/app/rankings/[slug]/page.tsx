@@ -80,7 +80,7 @@ export default async function RankingPage({
             >
               All rankings
             </Link>
-            <ShareButton title={page.title} url={`${SITE_URL}/rankings/${page.slug}`} />
+            <ShareButton title={page.title} url={`${SITE_URL}/rankings/${page.slug}`} path={`/rankings/${page.slug}`} />
           </div>
         </div>
 

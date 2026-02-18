@@ -4,20 +4,29 @@ import { useState } from "react";
 
 export default function ShareButton(props: {
   title: string;
-  url: string;
+  /** Absolute URL (preferred when you have it). */
+  url?: string;
+  /** Path (e.g. /bridges/golden-gate-bridge). Used to compute absolute URL on the client. */
+  path?: string;
   className?: string;
 }) {
   const [copied, setCopied] = useState(false);
 
+  const absoluteUrl =
+    props.url ??
+    (typeof window !== "undefined"
+      ? `${window.location.origin}${props.path ?? ""}`
+      : props.path ?? "");
+
   async function copy() {
     try {
-      await navigator.clipboard.writeText(props.url);
+      await navigator.clipboard.writeText(absoluteUrl);
       setCopied(true);
       window.setTimeout(() => setCopied(false), 1200);
     } catch {
       // fallback
       const ta = document.createElement("textarea");
-      ta.value = props.url;
+      ta.value = absoluteUrl;
       document.body.appendChild(ta);
       ta.select();
       document.execCommand("copy");
@@ -29,7 +38,7 @@ export default function ShareButton(props: {
 
   const tweetHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
     `${props.title} — BridgeAtlas`
-  )}&url=${encodeURIComponent(props.url)}`;
+  )}&url=${encodeURIComponent(absoluteUrl)}`;
 
   return (
     <div className={props.className}>
