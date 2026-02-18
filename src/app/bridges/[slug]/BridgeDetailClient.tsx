@@ -15,10 +15,34 @@ import CountryBackdrop from "@/components/CountryBackdrop";
 import CountryLabelRight from "@/components/CountryLabelRight";
 import ShareButton from "@/components/ShareButton";
 import RecommendedReading from "@/components/RecommendedReading";
+import { usePathname } from "next/navigation";
 
 export default function BridgeDetailClient(props: { bridge: Bridge }) {
   const b = props.bridge;
-
+  const pathname = usePathname() || "/";
+  const isFR = pathname === "/fr" || pathname.startsWith("/fr/");
+  const base = isFR ? "/fr" : "";
+  const t = isFR
+    ? {
+        back: "← Retour",
+        overview: "Aperçu",
+        why: "Pourquoi c’est important :",
+        funFact: "Fait fun",
+        records: "RECORDS",
+        quickFacts: "Chiffres clés",
+        sources: "Sources",
+        breakdown: "Décryptage ingénierie",
+      }
+    : {
+        back: "← Back",
+        overview: "Overview",
+        why: "Why it matters:",
+        funFact: "Fun fact",
+        records: "RECORDS",
+        quickFacts: "Quick facts",
+        sources: "Sources",
+        breakdown: "Engineering breakdown",
+      };
   return (
     <div className="min-h-dvh relative">
       <CountryBackdrop bridge={b} />
@@ -26,13 +50,13 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
       <main className="mx-auto max-w-4xl px-6 py-16 relative">
         <div className="flex items-center justify-between gap-4 flex-wrap mb-6">
           <Link
-            href="/bridges"
+            href={`${base}/bridges`}
             className="rounded-full px-5 py-2.5 text-sm font-semibold bg-white/70 border border-black/10 hover:bg-white transition"
           >
-            ← Back
+            {t.back}
           </Link>
 
-          <ShareButton title={b.name} path={`/bridges/${b.slug}`} />
+          <ShareButton title={b.name} path={`${base}/bridges/${b.slug}`} />
         </div>
 
         <div className="relative">
@@ -71,12 +95,12 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
           transition={{ duration: 0.35, delay: 0.08 }}
           className="mt-8"
         >
-          <ProfileSheet bridge={b}>
+          <ProfileSheet bridge={b} locale={isFR ? "fr" : "en"}>
             <div>
-              <div className="text-lg font-semibold">Overview</div>
+              <div className="text-lg font-semibold">{t.overview}</div>
               <p className="mt-3 text-sm text-ink/75 leading-7">{b.intro}</p>
               <p className="mt-4 text-sm text-ink/75 leading-7">
-                <span className="font-semibold">Why it matters:</span> {b.tagline}
+                <span className="font-semibold">{t.why}</span> {b.tagline}
               </p>
             </div>
 
@@ -85,12 +109,12 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
                 <BridgeMiniMap bridge={b} />
               </div>
               <div className="rounded-[28px] bg-paper/70 border border-black/10 p-5">
-                <div className="text-sm font-semibold">Fun fact</div>
+                <div className="text-sm font-semibold">{t.funFact}</div>
                 <p className="mt-3 text-sm text-ink/75 leading-7">{b.funFact}</p>
                 {b.records?.length ? (
                   <div className="mt-4">
                     <div className="text-xs font-semibold text-ink/60 tracking-wide">
-                      RECORDS
+                      {t.records}
                     </div>
                     <ul className="mt-2 space-y-2 text-sm text-ink/75 leading-7">
                       {b.records.slice(0, 3).map((r, i) => (
@@ -102,7 +126,7 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
               </div>
 
               <div className="rounded-[28px] bg-paper/70 border border-black/10 p-5">
-                <div className="text-sm font-semibold">Quick facts</div>
+                <div className="text-sm font-semibold">{t.quickFacts}</div>
                 <div className="mt-3 space-y-2 text-sm text-ink/70">
                   {b.quickFacts.map((f) => (
                     <div key={f.label} className="flex justify-between gap-4">
@@ -114,7 +138,7 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
               </div>
 
               <div className="sm:col-span-2 rounded-[28px] bg-paper/70 border border-black/10 p-5">
-                <div className="text-sm font-semibold">Sources</div>
+                <div className="text-sm font-semibold">{t.sources}</div>
                 <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
                   {b.sources.map((s) => (
                     <li key={s.url}>
@@ -132,7 +156,7 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
               </div>
             </div>
 
-            <Disclosure title="Engineering breakdown" defaultOpen={false}>
+            <Disclosure title={t.breakdown} defaultOpen={false}>
               <ul className="space-y-2 text-sm text-ink/75 leading-7">
                 {b.engineeringBreakdown.map((x, i) => (
                   <li key={i}>• {x}</li>

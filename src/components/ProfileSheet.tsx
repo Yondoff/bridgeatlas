@@ -28,9 +28,12 @@ function Stamp(props: { text: string }) {
 
 export default function ProfileSheet(props: {
   bridge: Bridge;
+  locale?: "en" | "fr";
   children: React.ReactNode;
 }) {
   const b = props.bridge;
+  const locale = props.locale ?? "en";
+  const isFR = locale === "fr";
 
   return (
     <div className="relative rounded-[44px] bg-white/55 border border-black/10 shadow-paper overflow-hidden">
@@ -47,13 +50,21 @@ export default function ProfileSheet(props: {
         <div className="flex items-start justify-between gap-6 flex-wrap">
           <div>
             <div className="text-xs font-semibold text-ink/60 tracking-wide">
-              BRIDGE PROFILE SHEET
+              {isFR ? "FICHE PONT" : "BRIDGE PROFILE SHEET"}
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <Pill tone="accent">{b.type}</Pill>
-              {b.yearOpened ? <Pill>Opened: {b.yearOpened}</Pill> : null}
-              <Pill>Length: {b.length}</Pill>
-              {b.coordinatesApprox ? <Pill>Location: approx.</Pill> : null}
+              {b.yearOpened ? (
+                <Pill>
+                  {isFR ? "Ouvert :" : "Opened:"} {b.yearOpened}
+                </Pill>
+              ) : null}
+              <Pill>
+                {isFR ? "Longueur :" : "Length:"} {b.length}
+              </Pill>
+              {b.coordinatesApprox ? (
+                <Pill>{isFR ? "Localisation : approx." : "Location: approx."}</Pill>
+              ) : null}
             </div>
           </div>
 
@@ -66,7 +77,9 @@ export default function ProfileSheet(props: {
         <div className="mt-8 space-y-6">{props.children}</div>
 
         <div className="mt-10 text-[11px] text-ink/45">
-          Tip: keep wording simple. If a term feels technical, explain it in the glossary.
+          {isFR
+            ? "Astuce : reste simple. Si un terme est technique, explique-le dans le glossaire."
+            : "Tip: keep wording simple. If a term feels technical, explain it in the glossary."}
         </div>
       </div>
     </div>

@@ -7,6 +7,5 @@ export const metadata = {
 };
 
 export default function PageFR() {
-  // For now we reuse the same UI. We'll translate UI strings next.
-  return <HomeClient />;
+  return <HomeClient locale="fr" />;
 }

@@ -19,34 +19,6 @@
     }
   ],
   "byType": {
-    "suspension": [
-      {
-        "title": "Wind Effects on Structures",
-        "author": "Emil Simiu, Robert H. Scanlan",
-        "url": "https://www.amazon.com/s?k=Wind+Effects+on+Structures+Simiu+Scanlan"
-      }
-    ],
-    "cable-stayed": [
-      {
-        "title": "Wind Effects on Structures",
-        "author": "Emil Simiu, Robert H. Scanlan",
-        "url": "https://www.amazon.com/s?k=Wind+Effects+on+Structures+Simiu+Scanlan"
-      }
-    ],
-    "arch": [
-      {
-        "title": "Structural Masonry",
-        "author": "P. B. Lourenço",
-        "url": "https://www.amazon.com/s?k=Structural+Masonry+Louren%C3%A7o"
-      }
-    ],
-    "truss": [
-      {
-        "title": "Steel Structures: Design and Behavior",
-        "author": "Charles G. Salmon, John E. Johnson, Faris A. Malhas",
-        "url": "https://www.amazon.com/s?k=Steel+Structures+Design+and+Behavior+Salmon+Johnson"
-      }
-    ],
     "viaduct": [
       {
         "title": "Prestressed Concrete",
