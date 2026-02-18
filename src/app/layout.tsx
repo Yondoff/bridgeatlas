@@ -3,6 +3,7 @@ import { Geist, Space_Grotesk, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { BridgeProvider } from "@/components/BridgeContext";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import LanguageToggle from "@/components/LanguageToggle";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -60,6 +61,7 @@ export default function RootLayout({
         <BridgeProvider>
           <SiteHeader />
           {children}
+          <SiteFooter />
           <LanguageToggle />
         </BridgeProvider>
       </body>
