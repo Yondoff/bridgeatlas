@@ -2,46 +2,52 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { localeFromPathname } from "@/lib/locale";
 
 function withBase(base: string, href: string) {
   if (href === "/") return base || "/";
   return `${base}${href}`;
 }
 
+const SUPPORT_URL = "https://ko-fi.com/bridgeatlas";
+
 export default function SiteFooter() {
   const pathname = usePathname() || "/";
-  const isFR = pathname === "/fr" || pathname.startsWith("/fr/");
-  const base = isFR ? "/fr" : "";
+  const { locale, base } = localeFromPathname(pathname);
 
-  const t = isFR
-    ? {
-        desc:
-          "Un projet indépendant : un atlas d’ingénierie des plus grands ponts du monde. Non affilié à une institution.",
-        links: "LIENS",
-        home: "Accueil",
-        bridges: "Ponts",
-        rankings: "Classements",
-        learn: "Apprendre",
-        map: "Carte",
-        credits: "Les crédits photos et les sources sont indiqués sur les pages pont.",
-        independent: "Projet indépendant",
-        affiliate:
-          "Certains liens peuvent être des liens d’affiliation. Nous pouvons toucher une commission, sans coût supplémentaire pour vous.",
-      }
-    : {
-        desc:
-          "An independent project: a curated engineering atlas of the world’s greatest bridges. Not affiliated with any institution.",
-        links: "LINKS",
-        home: "Home",
-        bridges: "Bridges",
-        rankings: "Rankings",
-        learn: "Learn",
-        map: "Map",
-        credits: "Photos & data credits are shown on each bridge page.",
-        independent: "Independent project",
-        affiliate:
-          "Some links may be affiliate links. We may earn a commission at no additional cost to you.",
-      };
+  const t =
+    locale === "fr"
+      ? {
+          desc:
+            "Un projet indépendant : un atlas d’ingénierie des plus grands ponts du monde. Non affilié à une institution.",
+          links: "LIENS",
+          home: "Accueil",
+          bridges: "Ponts",
+          rankings: "Classements",
+          learn: "Apprendre",
+          map: "Carte",
+          support: "Soutenir",
+          credits:
+            "Les crédits photos et les sources sont indiqués sur les pages pont.",
+          independent: "Projet indépendant",
+          affiliate:
+            "Certains liens peuvent être des liens d’affiliation. Nous pouvons toucher une commission, sans coût supplémentaire pour vous.",
+        }
+      : {
+          desc:
+            "An independent project: a curated engineering atlas of the world’s greatest bridges. Not affiliated with any institution.",
+          links: "LINKS",
+          home: "Home",
+          bridges: "Bridges",
+          rankings: "Rankings",
+          learn: "Learn",
+          map: "Map",
+          support: "Support",
+          credits: "Photos & data credits are shown on each bridge page.",
+          independent: "Independent project",
+          affiliate:
+            "Some links may be affiliate links. We may earn a commission at no additional cost to you.",
+        };
 
   return (
     <footer className="border-t border-black/10 bg-paper/60">
@@ -70,6 +76,14 @@ export default function SiteFooter() {
               <Link className="text-accent font-semibold hover:text-accentDeep" href={withBase(base, "/map")}>
                 {t.map}
               </Link>
+              <a
+                className="text-accent font-semibold hover:text-accentDeep"
+                href={SUPPORT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.support}
+              </a>
             </div>
           </div>
         </div>
