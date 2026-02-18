@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import BridgeIllustration from "@/components/BridgeIllustration";
 import BridgeCroquis, { hasCroquis } from "@/components/BridgeCroquis";
 import FlagBadge from "@/components/FlagBadge";
@@ -103,7 +104,38 @@ export default function BridgesClient(props: { bridges: Bridge[] }) {
               className="group rounded-[36px] bg-white/60 border border-black/10 shadow-paper hover:bg-white/70 transition overflow-hidden"
             >
               <div className="relative">
-                {hasCroquis(b.slug) ? (
+                {b.photo?.url ? (
+                  <div className="relative h-[220px] bg-paper/70">
+                    <Image
+                      src={b.photo.url}
+                      alt={b.photo.caption ?? `${b.name} photo`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 600px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0" />
+
+                    {(b.photo.credit || b.photo.sourceUrl) ? (
+                      <div className="absolute left-4 bottom-3 text-[11px] text-white/90">
+                        <span className="font-semibold">{b.photo.credit ?? "Photo"}</span>
+                        {b.photo.sourceUrl ? (
+                          <>
+                            <span className="text-white/70"> • </span>
+                            <a
+                              href={b.photo.sourceUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline decoration-white/40 hover:decoration-white/80"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              source
+                            </a>
+                          </>
+                        ) : null}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : hasCroquis(b.slug) ? (
                   <BridgeCroquis
                     slug={b.slug}
                     className="rounded-none border-0 bg-paper/70"

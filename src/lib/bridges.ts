@@ -414,6 +414,13 @@ export const bridges: Bridge[] = [
     city: "San Francisco",
     type: "suspension",
     yearOpened: 1937,
+    photo: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/b/bf/Golden_Gate_Bridge_as_seen_from_Battery_East.jpg",
+      caption: "Golden Gate Bridge",
+      credit: "Wikimedia Commons",
+      sourceUrl:
+        "https://commons.wikimedia.org/wiki/File:Golden_Gate_Bridge_as_seen_from_Battery_East.jpg",
+    },
     coordinates: { lon: -122.4783, lat: 37.8199 },
     intro:
       "The Golden Gate Bridge is a suspension bridge spanning the Golden Gate strait, linking San Francisco to Marin County. Completed in the 1930s, it became a symbol of the city — known for its Art Deco design, its International Orange paint, and the way it appears (and disappears) in coastal fog.",
@@ -444,6 +451,12 @@ export const bridges: Bridge[] = [
     city: "New York City",
     type: "suspension",
     yearOpened: 1883,
+    photo: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/0/00/Brooklyn_Bridge_Manhattan.jpg",
+      caption: "Brooklyn Bridge",
+      credit: "Wikimedia Commons",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Brooklyn_Bridge_Manhattan.jpg",
+    },
     coordinates: { lon: -73.9969, lat: 40.7061 },
     intro:
       "The Brooklyn Bridge connects Manhattan and Brooklyn across the East River. Its hybrid suspension/cable-stayed design and stone towers made it a landmark of 19th-century engineering.",
@@ -468,6 +481,12 @@ export const bridges: Bridge[] = [
     city: "London",
     type: "other",
     yearOpened: 1894,
+    photo: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/5/59/Tower_Bridge_at_Dawn.jpg",
+      caption: "Tower Bridge",
+      credit: "Wikimedia Commons",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Tower_Bridge_at_Dawn.jpg",
+    },
     coordinates: { lon: -0.0754, lat: 51.5055 },
     intro:
       "Tower Bridge is a combined bascule and suspension bridge over the River Thames. It’s iconic because it’s both a working movable bridge and a piece of Victorian architectural theater.",
@@ -495,6 +514,13 @@ export const bridges: Bridge[] = [
     city: "Sydney",
     type: "arch",
     yearOpened: 1932,
+    photo: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/5/55/Sydney_Harbour_Bridge-16_October_2025.jpg",
+      caption: "Sydney Harbour Bridge",
+      credit: "Wikimedia Commons",
+      sourceUrl:
+        "https://commons.wikimedia.org/wiki/File:Sydney_Harbour_Bridge-16_October_2025.jpg",
+    },
     coordinates: { lon: 151.2108, lat: -33.8523 },
     intro:
       "The Sydney Harbour Bridge is a steel through arch bridge spanning Sydney Harbour. It’s a load-carrying machine that doubles as a national symbol.",
@@ -518,6 +544,12 @@ export const bridges: Bridge[] = [
     country: "Japan",
     city: "Kobe",
     type: "suspension",
+    photo: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Akashi_Bridge.JPG",
+      caption: "Akashi Kaikyō Bridge",
+      credit: "Wikimedia Commons",
+      sourceUrl: "https://commons.wikimedia.org/wiki/File:Akashi_Bridge.JPG",
+    },
     yearOpened: 1998,
     coordinates: { lon: 135.021, lat: 34.617 },
     coordinatesApprox: true,
@@ -549,6 +581,13 @@ export const bridges: Bridge[] = [
     city: "Copenhagen–Malmö",
     type: "cable-stayed",
     yearOpened: 2000,
+    photo: {
+      url: "https://upload.wikimedia.org/wikipedia/commons/0/01/%C3%98resund_Bridge_from_the_air_in_September_2015.jpg",
+      caption: "Øresund Bridge",
+      credit: "Wikimedia Commons",
+      sourceUrl:
+        "https://commons.wikimedia.org/wiki/File:%C3%98resund_Bridge_from_the_air_in_September_2015.jpg",
+    },
     coordinates: { lon: 12.65, lat: 55.57 },
     coordinatesApprox: true,
     intro:
@@ -576,6 +615,12 @@ export const bridges: Bridge[] = [
     city: "Millau",
     type: "cable-stayed",
     yearOpened: 2004,
+    photo: {
+      url: "https://upload.wikimedia.org/wikipedia/en/a/a6/ViaducdeMillau.jpg",
+      caption: "Millau Viaduct",
+      credit: "Wikipedia",
+      sourceUrl: "https://en.wikipedia.org/wiki/Millau_Viaduct",
+    },
     coordinates: { lon: 3.021, lat: 44.085 },
     intro:
       "The Millau Viaduct is a cable-stayed bridge carrying traffic across the valley of the River Tarn near Millau. It’s famous for extreme height and a slender profile that makes the structure feel almost weightless.",
