@@ -93,7 +93,7 @@ function mergedBreakdown(type: Bridge["type"], extras: string[] = []) {
   return [...breakdownByType[type], ...extras];
 }
 
-export const bridges: Bridge[] = [
+const rawBridges: Bridge[] = [
   // -------------------------
   // 10 largest / longest bridges (curated list)
   // Note: “largest/longest” lists change; these are representative famous entries.
