@@ -3,19 +3,19 @@
   "subtitle": "If you want to go deeper than specs, these are solid civil/structural references.",
   "default": [
     {
+      "title": "The Tower and the Bridge: The New Art of Structural Engineering",
+      "author": "David P. Billington Jr.",
+      "url": "https://amzn.to/46d7eIW"
+    },
+    {
+      "title": "Engineers' Practical Databook",
+      "author": "Jay Smith",
+      "url": "https://amzn.to/4kFteSF"
+    },
+    {
       "title": "Bridge Engineering",
       "author": "Demetrios E. Tonias, Jim J. Zhao",
       "url": "https://www.amazon.com/s?k=Bridge+Engineering+Tonias+Zhao"
-    },
-    {
-      "title": "Design of Highway Bridges: An LRFD Approach",
-      "author": "Richard M. Barker, Jay A. Puckett",
-      "url": "https://www.amazon.com/s?k=Design+of+Highway+Bridges+LRFD+Barker+Puckett"
-    },
-    {
-      "title": "Structural Analysis",
-      "author": "R. C. Hibbeler",
-      "url": "https://www.amazon.com/s?k=Hibbeler+Structural+Analysis"
     }
   ],
   "byType": {
@@ -51,7 +51,7 @@
       {
         "title": "Prestressed Concrete",
         "author": "N. Krishna Raju",
-        "url": "https://www.amazon.com/s?k=Prestressed+Concrete+Krishna+Raju"
+        "url": "https://amzn.to/4aFNQpi"
       }
     ]
   }
