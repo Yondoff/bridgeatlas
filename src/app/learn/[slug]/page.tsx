@@ -81,9 +81,18 @@ export default async function LearnPage({
 
         <p className="mt-3 text-ink/70">{page.description}</p>
 
-        <div className="mt-8 space-y-4 text-[15px] leading-7 text-ink/85">
-          {page.body.map((para, idx) => (
-            <p key={idx}>{para}</p>
+        <div className="mt-8 space-y-8 text-[15px] leading-7 text-ink/85">
+          {page.sections.map((section) => (
+            <section key={section.heading}>
+              <h2 className="text-lg font-extrabold tracking-tight text-ink">
+                {section.heading}
+              </h2>
+              <div className="mt-3 space-y-4">
+                {section.paragraphs.map((para, idx) => (
+                  <p key={idx}>{para}</p>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
 
