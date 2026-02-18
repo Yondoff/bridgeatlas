@@ -15,6 +15,7 @@ import CountryBackdrop from "@/components/CountryBackdrop";
 import CountryLabelRight from "@/components/CountryLabelRight";
 import ShareButton from "@/components/ShareButton";
 import RecommendedReading from "@/components/RecommendedReading";
+import SupportNudge from "@/components/SupportNudge";
 import { usePathname } from "next/navigation";
 
 import { localizeBridge } from "@/lib/i18nBridge";
@@ -48,6 +49,7 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
       };
   return (
     <div className="min-h-dvh relative">
+      <SupportNudge locale={isFR ? "fr" : "en"} />
       <CountryBackdrop bridge={b} />
       <CountryLabelRight bridge={b} />
       <main className="mx-auto max-w-4xl px-6 py-16 relative">
