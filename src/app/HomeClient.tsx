@@ -29,10 +29,10 @@ export default function HomeClient() {
                 BRIDGEATLAS
               </p>
               <h1 className="mt-2 text-4xl sm:text-5xl font-semibold tracking-tight text-ink">
-                Iconic bridges, explained.
+                The engineering atlas of the world’s greatest bridges.
               </h1>
               <p className="mt-4 text-base sm:text-lg leading-7 text-ink/70 max-w-xl">
-                A curated gallery of legendary bridges — clean, visual, and easy to browse.
+                Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.
               </p>
 
               <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -48,6 +48,18 @@ export default function HomeClient() {
                 >
                   Browse bridges
                 </Link>
+                <Link
+                  href="/rankings"
+                  className="rounded-full bg-white/70 border border-black/10 px-6 py-3 text-sm font-semibold text-ink hover:bg-white transition"
+                >
+                  Rankings
+                </Link>
+                <Link
+                  href="/learn"
+                  className="rounded-full bg-white/70 border border-black/10 px-6 py-3 text-sm font-semibold text-ink hover:bg-white transition"
+                >
+                  Learn
+                </Link>
               </div>
             </div>
 
@@ -55,9 +67,9 @@ export default function HomeClient() {
               <div className="rounded-[32px] bg-paper/80 border border-black/10 p-5">
                 <div className="text-sm font-semibold">What you’ll get</div>
                 <ul className="mt-3 space-y-2 text-sm text-ink/70">
-                  <li>• Zero clutter, curvy UI, paper-like warmth</li>
-                  <li>• Clean bridge profiles with engineering breakdowns</li>
-                  <li>• Interactive world map</li>
+                  <li>• Bridge profiles: specs, sources, and design context</li>
+                  <li>• Rankings built around real search demand</li>
+                  <li>• Learn pages that explain how bridges actually work</li>
                 </ul>
               </div>
             </div>
