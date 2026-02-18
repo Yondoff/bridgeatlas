@@ -14,6 +14,7 @@ import BridgeMiniMap from "@/components/BridgeMiniMap";
 import CountryBackdrop from "@/components/CountryBackdrop";
 import CountryLabelRight from "@/components/CountryLabelRight";
 import ShareButton from "@/components/ShareButton";
+import RecommendedReading from "@/components/RecommendedReading";
 
 export default function BridgeDetailClient(props: { bridge: Bridge }) {
   const b = props.bridge;
@@ -140,6 +141,10 @@ export default function BridgeDetailClient(props: { bridge: Bridge }) {
             </Disclosure>
 
             <Glossary bridge={b} />
+
+            <div className="pt-2">
+              <RecommendedReading bridge={b} />
+            </div>
           </ProfileSheet>
         </motion.div>
       </main>

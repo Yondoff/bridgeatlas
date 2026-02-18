@@ -43,6 +43,10 @@ export default function SiteFooter() {
             Photos & data credits are shown on each bridge page.
           </div>
         </div>
+
+        <div className="mt-3 text-[11px] text-ink/50 leading-5">
+          Some links may be affiliate links. We may earn a commission at no additional cost to you.
+        </div>
       </div>
     </footer>
   );
