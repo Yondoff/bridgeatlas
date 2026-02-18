@@ -1786,7 +1786,7 @@ const rawBridges: Bridge[] = [
     slug: "great-belt-bridge",
     name: "Great Belt Bridge",
     country: "Denmark",
-    city: "Storeb%C3%A6lt",
+    city: "Storebælt",
     type: "suspension",
     yearOpened: 1998,
     coordinates: { lon: 10.95, lat: 55.33 },
