@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Space_Grotesk, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import { BridgeProvider } from "@/components/BridgeContext";
+import SiteHeader from "@/components/SiteHeader";
+import LanguageToggle from "@/components/LanguageToggle";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -18,8 +21,6 @@ const barlowCondensed = Barlow_Condensed({
   weight: ["300", "400", "500", "600"],
   variable: "--font-condensed",
 });
-
-import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -53,8 +54,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${spaceGrotesk.variable} ${barlowCondensed.variable} min-h-dvh bg-paper text-ink antialiased`}>
-        <BridgeProvider>{children}</BridgeProvider>
+      <body
+        className={`${geistSans.variable} ${spaceGrotesk.variable} ${barlowCondensed.variable} min-h-dvh bg-paper text-ink antialiased`}
+      >
+        <BridgeProvider>
+          <SiteHeader />
+          {children}
+          <LanguageToggle />
+        </BridgeProvider>
       </body>
     </html>
   );
