@@ -254,6 +254,121 @@ const photosBySlug: Record<string, Bridge["photo"]> = {
     sourceUrl:
       "https://commons.wikimedia.org/wiki/File:Storeb%25C3%25A6ltsbroen_from_Sj%25C3%25A6lland.jpg",
   },
+  "danyang-kunshan-grand-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/1/16/201603_Danyang-Kunshan_grand_bridge_%28wuxi%29_%28cropped%29.JPG",
+    caption: "Danyang–Kunshan Grand Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:201603_Danyang-Kunshan_grand_bridge_%2528wuxi%2529_%2528cropped%2529.JPG",
+  },
+  "changhua-kaohsiung-viaduct": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Shalun_Line_20061029.JPG",
+    caption: "Changhua–Kaohsiung Viaduct",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Shalun_Line_20061029.JPG",
+  },
+  "weinan-weihe-grand-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/3/37/%E6%B8%AD%E5%8D%97%E5%8C%97%E7%AB%99%E4%BE%A7%E9%9D%A2%E8%88%AA%E6%8B%8D.jpg",
+    caption: "Weinan Weihe Grand Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:%25E6%25B8%25AD%25E5%258D%2597%25E5%258C%2597%25E7%25AB%2599%25E4%25BE%25A7%25E9%259D%25A2%25E8%2588%25AA%25E6%258B%258D.jpg",
+  },
+  "lake-pontchartrain-causeway": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Lake_Pontchatrain_Causeway_Aerial_-_Jan2013_%2832382802513%29.jpg",
+    caption: "Lake Pontchartrain Causeway",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Lake_Pontchatrain_Causeway_Aerial_-_Jan2013_%252832382802513%2529.jpg",
+  },
+  "clifton-suspension-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/7/79/Clifton_Suspension_Bridge-9350.jpg",
+    caption: "Clifton Suspension Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Clifton_Suspension_Bridge-9350.jpg",
+  },
+  "pontcysyllte-aqueduct": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Pontcysyllte_aqueduct_arp.jpg",
+    caption: "Pontcysyllte Aqueduct",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Pontcysyllte_aqueduct_arp.jpg",
+  },
+  "yavuz-sultan-selim-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Yavuz_Sultan_Selim_Bridge1.JPG",
+    caption: "Yavuz Sultan Selim Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Yavuz_Sultan_Selim_Bridge1.JPG",
+  },
+  "fatih-sultan-mehmet-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/1/15/Fatih_sultan_mehmet_k%C3%B6pr%C3%BCs%C3%BC_%28cropped%29.jpg",
+    caption: "Fatih Sultan Mehmet Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Fatih_sultan_mehmet_k%25C3%25B6pr%25C3%25BCs%25C3%25BC_%2528cropped%2529.jpg",
+  },
+  "15-july-martyrs-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/5/53/Bosphorus_Bridge_%28235499411%29.jpeg",
+    caption: "15 July Martyrs Bridge (Bosphorus Bridge)",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Bosphorus_Bridge_%2528235499411%2529.jpeg",
+  },
+  "hohenzollern-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Hohenzollernbr%C3%BCcke_K%C3%B6ln_von_oben.jpg",
+    caption: "Hohenzollern Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Hohenzollernbr%25C3%25BCcke_K%25C3%25B6ln_von_oben.jpg",
+  },
+  "kohlbrandbrucke": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/e/ef/K%C3%B6hlbrandbr%C3%BCcke_%28Hamburg%29.4.phb.ajb.jpg",
+    caption: "Köhlbrandbrücke",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:K%25C3%25B6hlbrandbr%25C3%25BCcke_%2528Hamburg%2529.4.phb.ajb.jpg",
+  },
+  "rio-niteroi-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Ilha_de_Mocangu%C3%AA_by_Diego_Baravelli_%28cropped%29.jpg",
+    caption: "Rio–Niterói Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Ilha_de_Mocangu%25C3%25AA_by_Diego_Baravelli_%2528cropped%2529.jpg",
+  },
+  "octavio-frias-de-oliveira-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Ponte_estaiada_Octavio_Frias_-_Sao_Paulo.jpg",
+    caption: "Octávio Frias de Oliveira Bridge (Ponte Estaiada)",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Ponte_estaiada_Octavio_Frias_-_Sao_Paulo.jpg",
+  },
+  "nelson-mandela-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/5/54/South_Africa-Johannesburg-Nelson_Mandela_Bridge001.jpg",
+    caption: "Nelson Mandela Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:South_Africa-Johannesburg-Nelson_Mandela_Bridge001.jpg",
+  },
+  "maputo-katembe-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Maputo%E2%80%93Katembe_bridge_from_the_norther_shore%3B_July_2018.jpg",
+    caption: "Maputo–Katembe Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Maputo%25E2%2580%2593Katembe_bridge_from_the_norther_shore%253B_July_2018.jpg",
+  },
+  "george-washington-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/2/24/George_Washington_Bridge_from_New_Jersey-edit.jpg",
+    caption: "George Washington Bridge",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:George_Washington_Bridge_from_New_Jersey-edit.jpg",
+  },
+  "petersen-bridge": {
+    url: "https://upload.wikimedia.org/wikipedia/commons/9/97/Ponte_Hercilio_Luz_-_Florianopolis_-_Santa_Catarina.jpg",
+    caption: "Ponte Hercílio Luz",
+    credit: "Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Ponte_Hercilio_Luz_-_Florianopolis_-_Santa_Catarina.jpg",
+  },
 };
 
 const rawBridges: Bridge[] = [
