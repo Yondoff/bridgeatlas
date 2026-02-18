@@ -3,24 +3,27 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-function toFrenchPath(pathname: string) {
-  if (pathname === "/") return "/fr";
-  if (pathname.startsWith("/fr")) return pathname;
-  return `/fr${pathname}`;
-}
+function withPrefix(pathname: string, prefix: "" | "/fr" | "/de") {
+  // normalize to EN path first
+  let p = pathname;
+  if (p === "/fr") p = "/";
+  if (p.startsWith("/fr/")) p = p.replace(/^\/fr/, "");
+  if (p === "/de") p = "/";
+  if (p.startsWith("/de/")) p = p.replace(/^\/de/, "");
 
-function toEnglishPath(pathname: string) {
-  if (pathname === "/fr") return "/";
-  if (pathname.startsWith("/fr/")) return pathname.replace(/^\/fr/, "");
-  return pathname;
+  if (prefix === "") return p;
+  if (p === "/") return prefix;
+  return `${prefix}${p}`;
 }
 
 export default function LanguageToggle() {
   const pathname = usePathname() || "/";
   const isFR = pathname === "/fr" || pathname.startsWith("/fr/");
+  const isDE = pathname === "/de" || pathname.startsWith("/de/");
 
-  const enHref = toEnglishPath(pathname);
-  const frHref = toFrenchPath(pathname);
+  const enHref = withPrefix(pathname, "");
+  const frHref = withPrefix(pathname, "/fr");
+  const deHref = withPrefix(pathname, "/de");
 
   return (
     <div className="fixed bottom-5 right-5 z-50">
@@ -28,7 +31,9 @@ export default function LanguageToggle() {
         <Link
           href={enHref}
           className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
-            !isFR ? "bg-accent text-white" : "text-ink/70 hover:text-ink"
+            !isFR && !isDE
+              ? "bg-accent text-white"
+              : "text-ink/70 hover:text-ink"
           }`}
         >
           EN
@@ -40,6 +45,14 @@ export default function LanguageToggle() {
           }`}
         >
           FR
+        </Link>
+        <Link
+          href={deHref}
+          className={`rounded-full px-3 py-1.5 text-xs font-bold transition ${
+            isDE ? "bg-accent text-white" : "text-ink/70 hover:text-ink"
+          }`}
+        >
+          DE
         </Link>
       </div>
     </div>

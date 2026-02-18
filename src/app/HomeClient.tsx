@@ -15,11 +15,12 @@ type FeaturedBridge = {
 };
 
 export default function HomeClient(
-  props: { locale?: "en" | "fr"; featured?: FeaturedBridge[] } = {}
+  props: { locale?: "en" | "fr" | "de"; featured?: FeaturedBridge[] } = {}
 ) {
   const locale = props.locale ?? "en";
   const isFR = locale === "fr";
-  const base = isFR ? "/fr" : "";
+  const isDE = locale === "de";
+  const base = isFR ? "/fr" : isDE ? "/de" : "";
 
   const t = isFR
     ? {
@@ -46,30 +47,55 @@ export default function HomeClient(
         linkCompare: "Parcourir tous les ponts",
         tip: "Astuce : commence par un pont, puis clique dans les sources et la carte.",
       }
-    : {
-        title: "The engineering atlas of the world’s greatest bridges.",
-        subtitle:
-          "Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.",
-        ctaMap: "Explore the world map",
-        ctaBridges: "Browse bridges",
-        ctaRankings: "Rankings",
-        ctaLearn: "Learn",
-        featured: "Featured bridges",
-        featuredHint: "Click one. Read the story. Keep going.",
-        boxTitle: "What you’ll get",
-        bullets: [
-          "• Bridge profiles: specs, sources, and design context",
-          "• Rankings built around real search demand",
-          "• Learn pages that explain how bridges actually work",
-        ],
-        keepGoing: "Keep going",
-        keepGoingDesc:
-          "If you don’t know what to read next: open a ranking, then a Learn page.",
-        linkLongest: "Ranking: longest bridges",
-        linkSuspension: "Learn: how suspension bridges work",
-        linkCompare: "Browse all bridges",
-        tip: "Tip: start with a bridge, then follow the sources and the map.",
-      };
+    : isDE
+      ? {
+          title: "Der Ingenieur‑Atlas der größten Brücken der Welt.",
+          subtitle:
+            "Brückenprofile mit Daten, Quellen und echten Erklärungen — plus Rankings und Learn‑Seiten.",
+          ctaMap: "Weltkarte öffnen",
+          ctaBridges: "Brücken ansehen",
+          ctaRankings: "Rankings",
+          ctaLearn: "Lernen",
+          featured: "Highlights",
+          featuredHint: "Klick eine Brücke. Lies die Story. Weiterklicken.",
+          boxTitle: "Was du bekommst",
+          bullets: [
+            "• Brückenprofile: Daten, Quellen, Design‑Kontext",
+            "• Rankings nach echter Suchnachfrage",
+            "• Learn‑Seiten, die erklären wie Brücken funktionieren",
+          ],
+          keepGoing: "Weiter",
+          keepGoingDesc:
+            "Wenn du nicht weißt, was als Nächstes: erst ein Ranking, dann eine Learn‑Seite.",
+          linkLongest: "Ranking: längste Brücken",
+          linkSuspension: "Learn: wie Hängebrücken funktionieren",
+          linkCompare: "Alle Brücken",
+          tip: "Tipp: starte mit einer Brücke und folge dann Quellen und Karte.",
+        }
+      : {
+          title: "The engineering atlas of the world’s greatest bridges.",
+          subtitle:
+            "Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.",
+          ctaMap: "Explore the world map",
+          ctaBridges: "Browse bridges",
+          ctaRankings: "Rankings",
+          ctaLearn: "Learn",
+          featured: "Featured bridges",
+          featuredHint: "Click one. Read the story. Keep going.",
+          boxTitle: "What you’ll get",
+          bullets: [
+            "• Bridge profiles: specs, sources, and design context",
+            "• Rankings built around real search demand",
+            "• Learn pages that explain how bridges actually work",
+          ],
+          keepGoing: "Keep going",
+          keepGoingDesc:
+            "If you don’t know what to read next: open a ranking, then a Learn page.",
+          linkLongest: "Ranking: longest bridges",
+          linkSuspension: "Learn: how suspension bridges work",
+          linkCompare: "Browse all bridges",
+          tip: "Tip: start with a bridge, then follow the sources and the map.",
+        };
 
   return (
     <div className="min-h-dvh">
@@ -190,11 +216,13 @@ export default function HomeClient(
                   </div>
                   <div className="px-5 py-4">
                     <div className="text-sm text-ink/75 leading-6">
-                      <span className="font-semibold">{isFR ? "Pourquoi :" : "Why:"}</span>{" "}
+                      <span className="font-semibold">
+                        {isFR ? "Pourquoi :" : isDE ? "Warum:" : "Why:"}
+                      </span>{" "}
                       {b.tagline}
                     </div>
                     <div className="mt-3 text-xs text-ink/55 flex items-center justify-between">
-                      <span>{isFR ? "Ouvrir" : "Open"}</span>
+                      <span>{isFR ? "Ouvrir" : isDE ? "Öffnen" : "Open"}</span>
                       <span className="font-semibold text-accent group-hover:text-accentDeep transition">
                         →
                       </span>
