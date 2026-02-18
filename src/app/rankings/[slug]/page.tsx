@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { rankingPages } from "@/lib/rankings";
 import { getBridge } from "@/lib/bridges";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import ShareButton from "@/components/ShareButton";
 
 export async function generateStaticParams() {
   return rankingPages.map((p) => ({ slug: p.slug }));
@@ -70,14 +71,17 @@ export default async function RankingPage({
       />
 
       <div className="rounded-[40px] bg-white/60 border border-black/10 shadow-paper px-8 py-10">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-4 flex-wrap">
           <h1 className="text-3xl font-extrabold tracking-tight">{page.title}</h1>
-          <Link
-            href="/rankings"
-            className="text-sm font-semibold text-accent hover:text-accentDeep transition"
-          >
-            All rankings
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/rankings"
+              className="text-sm font-semibold text-accent hover:text-accentDeep transition"
+            >
+              All rankings
+            </Link>
+            <ShareButton title={page.title} url={`${SITE_URL}/rankings/${page.slug}`} />
+          </div>
         </div>
 
         <p className="mt-3 text-ink/70">{page.intro}</p>

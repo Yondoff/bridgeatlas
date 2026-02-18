@@ -1,9 +1,14 @@
+export type LearnSection = {
+  heading: string;
+  paragraphs: string[];
+};
+
 export type LearnPage = {
   slug: string;
   title: string;
   description: string;
-  /** Simple markdown-ish paragraphs (rendered as <p>) */
-  body: string[];
+  /** Sections used to build H2 structure for SEO. */
+  sections: LearnSection[];
   /** Bridge slugs to link as examples */
   relatedBridgeSlugs?: string[];
 };
