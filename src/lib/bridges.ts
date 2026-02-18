@@ -1792,7 +1792,7 @@ const rawBridges: Bridge[] = [
     coordinates: { lon: 10.95, lat: 55.33 },
     coordinatesApprox: true,
     intro:
-      "Great Belt Bridge is part of the fixed link across Storeb%C3%A6lt in Denmark. It’s iconic as a nation-scale connector.",
+      "Great Belt Bridge is part of the fixed link across Storebælt in Denmark. It’s iconic as a nation-scale connector.",
     tagline: "A nation-linking bridge built at serious scale.",
 
     length: "Total length: ~6.8 km",

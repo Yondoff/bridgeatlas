@@ -23,6 +23,7 @@ export default function BridgesClient(props: { bridges: Bridge[] }) {
   const [country, setCountry] = useState<string>("");
   const [type, setType] = useState<string>("");
   const [sort, setSort] = useState<SortKey>("name");
+  const [previewMode, setPreviewMode] = useState<"photos" | "illustrations">("photos");
 
   const countries = useMemo(() => {
     return Array.from(new Set(props.bridges.map((b) => b.country))).sort();
@@ -83,18 +84,41 @@ export default function BridgesClient(props: { bridges: Bridge[] }) {
           </Link>
         </div>
 
-        <SortBar
-          query={query}
-          setQuery={setQuery}
-          type={type}
-          setType={setType}
-          country={country}
-          setCountry={setCountry}
-          sort={sort}
-          setSort={setSort}
-          countries={countries}
-          types={types}
-        />
+        <div className="mt-6 flex items-center justify-between gap-4 flex-wrap">
+          <SortBar
+            query={query}
+            setQuery={setQuery}
+            type={type}
+            setType={setType}
+            country={country}
+            setCountry={setCountry}
+            sort={sort}
+            setSort={setSort}
+            countries={countries}
+            types={types}
+          />
+
+          <div className="rounded-full bg-white/70 border border-black/10 p-1 flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setPreviewMode("photos")}
+              className={`rounded-full px-3 py-2 text-xs font-bold transition ${
+                previewMode === "photos" ? "bg-accent text-white" : "text-ink/70 hover:text-ink"
+              }`}
+            >
+              Photos
+            </button>
+            <button
+              type="button"
+              onClick={() => setPreviewMode("illustrations")}
+              className={`rounded-full px-3 py-2 text-xs font-bold transition ${
+                previewMode === "illustrations" ? "bg-accent text-white" : "text-ink/70 hover:text-ink"
+              }`}
+            >
+              Illustrations
+            </button>
+          </div>
+        </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {filtered.map((b) => (
