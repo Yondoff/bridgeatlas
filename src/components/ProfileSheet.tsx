@@ -75,12 +75,6 @@ export default function ProfileSheet(props: {
 
         {/* content */}
         <div className="mt-8 space-y-6">{props.children}</div>
-
-        <div className="mt-10 text-[11px] text-ink/45">
-          {isFR
-            ? "Astuce : reste simple. Si un terme est technique, explique-le dans le glossaire."
-            : "Tip: keep wording simple. If a term feels technical, explain it in the glossary."}
-        </div>
       </div>
     </div>
   );
