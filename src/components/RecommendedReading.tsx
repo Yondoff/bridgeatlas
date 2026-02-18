@@ -1,4 +1,5 @@
 import type { Bridge } from "@/lib/bridges";
+import config from "@/content/recommendedReading.json";
 
 type Book = {
   title: string;
@@ -6,54 +7,47 @@ type Book = {
   url: string;
 };
 
-function booksForBridge(b: Bridge): Book[] {
-  // Clean, broadly relevant civil/structural references.
-  // Note: URLs are plain outbound links; you can add affiliate parameters later.
-  const general: Book[] = [
-    {
-      title: "Bridge Engineering",
-      author: "Demetrios E. Tonias, Jim J. Zhao",
-      url: "https://www.amazon.com/s?k=Bridge+Engineering+Tonias+Zhao",
-    },
-    {
-      title: "Design of Highway Bridges: An LRFD Approach",
-      author: "Richard M. Barker, Jay A. Puckett",
-      url: "https://www.amazon.com/s?k=Design+of+Highway+Bridges+LRFD+Barker+Puckett",
-    },
-    {
-      title: "Structural Analysis",
-      author: "R. C. Hibbeler",
-      url: "https://www.amazon.com/s?k=Hibbeler+Structural+Analysis",
-    },
-  ];
+type ReadingConfig = {
+  title: string;
+  subtitle?: string;
+  default: Book[];
+  byType?: Partial<Record<Bridge["type"], Book[]>>;
+};
 
-  if (b.type === "suspension" || b.type === "cable-stayed") {
-    return [
-      {
-        title: "Wind Effects on Structures",
-        author: "Emil Simiu, Robert H. Scanlan",
-        url: "https://www.amazon.com/s?k=Wind+Effects+on+Structures+Simiu+Scanlan",
-      },
-      ...general.slice(0, 2),
-    ];
+const readingConfig = config as ReadingConfig;
+
+function getBooksForType(type: Bridge["type"]): Book[] {
+  const specific = readingConfig.byType?.[type] ?? [];
+  // Merge type-specific first, then fall back to defaults.
+  const merged = [...specific, ...(readingConfig.default ?? [])];
+
+  // Deduplicate by URL/title to avoid repeats.
+  const seen = new Set<string>();
+  const deduped: Book[] = [];
+  for (const b of merged) {
+    const key = `${b.url}::${b.title}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduped.push(b);
   }
-
-  return general;
+  return deduped;
 }
 
 export default function RecommendedReading(props: { bridge: Bridge }) {
-  const books = booksForBridge(props.bridge).slice(0, 3);
+  const books = getBooksForType(props.bridge.type).slice(0, 3);
 
   return (
     <div className="rounded-[28px] bg-paper/70 border border-black/10 p-6">
-      <div className="text-sm font-semibold">Recommended Reading</div>
-      <p className="mt-2 text-xs text-ink/60 max-w-2xl leading-6">
-        If you want to go deeper than specs, these are solid civil/structural references.
-      </p>
+      <div className="text-sm font-semibold">{readingConfig.title}</div>
+      {readingConfig.subtitle ? (
+        <p className="mt-2 text-xs text-ink/60 max-w-2xl leading-6">
+          {readingConfig.subtitle}
+        </p>
+      ) : null}
 
       <ul className="mt-4 space-y-2 text-sm">
         {books.map((book) => (
-          <li key={book.title}>
+          <li key={book.url}>
             <a
               href={book.url}
               target="_blank"
@@ -62,9 +56,7 @@ export default function RecommendedReading(props: { bridge: Bridge }) {
             >
               {book.title}
             </a>
-            {book.author ? (
-              <span className="text-ink/60"> — {book.author}</span>
-            ) : null}
+            {book.author ? <span className="text-ink/60"> — {book.author}</span> : null}
           </li>
         ))}
       </ul>

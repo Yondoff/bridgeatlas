@@ -1,0 +1,58 @@
+{
+  "title": "Recommended Reading",
+  "subtitle": "If you want to go deeper than specs, these are solid civil/structural references.",
+  "default": [
+    {
+      "title": "Bridge Engineering",
+      "author": "Demetrios E. Tonias, Jim J. Zhao",
+      "url": "https://www.amazon.com/s?k=Bridge+Engineering+Tonias+Zhao"
+    },
+    {
+      "title": "Design of Highway Bridges: An LRFD Approach",
+      "author": "Richard M. Barker, Jay A. Puckett",
+      "url": "https://www.amazon.com/s?k=Design+of+Highway+Bridges+LRFD+Barker+Puckett"
+    },
+    {
+      "title": "Structural Analysis",
+      "author": "R. C. Hibbeler",
+      "url": "https://www.amazon.com/s?k=Hibbeler+Structural+Analysis"
+    }
+  ],
+  "byType": {
+    "suspension": [
+      {
+        "title": "Wind Effects on Structures",
+        "author": "Emil Simiu, Robert H. Scanlan",
+        "url": "https://www.amazon.com/s?k=Wind+Effects+on+Structures+Simiu+Scanlan"
+      }
+    ],
+    "cable-stayed": [
+      {
+        "title": "Wind Effects on Structures",
+        "author": "Emil Simiu, Robert H. Scanlan",
+        "url": "https://www.amazon.com/s?k=Wind+Effects+on+Structures+Simiu+Scanlan"
+      }
+    ],
+    "arch": [
+      {
+        "title": "Structural Masonry",
+        "author": "P. B. Lourenço",
+        "url": "https://www.amazon.com/s?k=Structural+Masonry+Louren%C3%A7o"
+      }
+    ],
+    "truss": [
+      {
+        "title": "Steel Structures: Design and Behavior",
+        "author": "Charles G. Salmon, John E. Johnson, Faris A. Malhas",
+        "url": "https://www.amazon.com/s?k=Steel+Structures+Design+and+Behavior+Salmon+Johnson"
+      }
+    ],
+    "viaduct": [
+      {
+        "title": "Prestressed Concrete",
+        "author": "N. Krishna Raju",
+        "url": "https://www.amazon.com/s?k=Prestressed+Concrete+Krishna+Raju"
+      }
+    ]
+  }
+}
