@@ -19,9 +19,31 @@ const barlowCondensed = Barlow_Condensed({
   variable: "--font-condensed",
 });
 
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+
 export const metadata: Metadata = {
-  title: "BridgeAtlas",
-  description: "A warm, curated atlas of iconic bridges.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description:
+    "The engineering atlas of the world’s greatest bridges: specs, explanations, and context — built for curious builders.",
+  applicationName: SITE_NAME,
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description:
+      "The engineering atlas of the world’s greatest bridges: specs, explanations, and context.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description:
+      "The engineering atlas of the world’s greatest bridges: specs, explanations, and context.",
+  },
 };
 
 export default function RootLayout({

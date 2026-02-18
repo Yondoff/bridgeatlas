@@ -1,7 +1,37 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { BridgeProvider } from "@/components/BridgeContext";
 import { getBridge } from "@/lib/bridges";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import BridgeDetailClient from "./BridgeDetailClient";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const bridge = getBridge(slug);
+  if (!bridge) return { title: "Not found" };
+
+  const title = bridge.name;
+  const description = bridge.tagline || bridge.intro;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `${SITE_URL}/bridges/${bridge.slug}`,
+    },
+    openGraph: {
+      title: `${title} — ${SITE_NAME}`,
+      description,
+      url: `${SITE_URL}/bridges/${bridge.slug}`,
+      type: "article",
+      images: bridge.photo?.url ? [bridge.photo.url] : undefined,
+    },
+  };
+}
 
 export default async function BridgeDetailPage({
   params,
