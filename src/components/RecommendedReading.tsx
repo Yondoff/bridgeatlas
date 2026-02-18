@@ -1,10 +1,22 @@
+"use client";
+
 import type { Bridge } from "@/lib/bridges";
-import config from "@/content/recommendedReading.json";
+import enConfig from "@/content/recommendedReading.en.json";
+import frConfig from "@/content/recommendedReading.fr.json";
+import { usePathname } from "next/navigation";
+
+type BookLink = {
+  label: string;
+  url: string;
+};
 
 type Book = {
   title: string;
   author?: string;
-  url: string;
+  /** Back-compat: a single URL */
+  url?: string;
+  /** Preferred: multiple storefront links */
+  links?: BookLink[];
 };
 
 type ReadingConfig = {
@@ -14,9 +26,7 @@ type ReadingConfig = {
   byType?: Partial<Record<Bridge["type"], Book[]>>;
 };
 
-const readingConfig = config as ReadingConfig;
-
-function getBooksForType(type: Bridge["type"]): Book[] {
+function getBooksForType(readingConfig: ReadingConfig, type: Bridge["type"]): Book[] {
   const specific = readingConfig.byType?.[type] ?? [];
   // Merge type-specific first, then fall back to defaults.
   const merged = [...specific, ...(readingConfig.default ?? [])];
@@ -25,7 +35,8 @@ function getBooksForType(type: Bridge["type"]): Book[] {
   const seen = new Set<string>();
   const deduped: Book[] = [];
   for (const b of merged) {
-    const key = `${b.url}::${b.title}`;
+    const url = b.url ?? "";
+    const key = `${url}::${b.title}`;
     if (seen.has(key)) continue;
     seen.add(key);
     deduped.push(b);
@@ -34,7 +45,11 @@ function getBooksForType(type: Bridge["type"]): Book[] {
 }
 
 export default function RecommendedReading(props: { bridge: Bridge }) {
-  const books = getBooksForType(props.bridge.type).slice(0, 3);
+  const pathname = usePathname() || "/";
+  const isFR = pathname === "/fr" || pathname.startsWith("/fr/");
+  const readingConfig = (isFR ? frConfig : enConfig) as ReadingConfig;
+
+  const books = getBooksForType(readingConfig, props.bridge.type).slice(0, 3);
 
   return (
     <div className="rounded-[28px] bg-paper/70 border border-black/10 p-6">
@@ -47,16 +62,18 @@ export default function RecommendedReading(props: { bridge: Bridge }) {
 
       <ul className="mt-4 space-y-2 text-sm">
         {books.map((book) => (
-          <li key={book.url}>
+          <li key={book.title}>
             <a
-              href={book.url}
+              href={book.url ?? "#"}
               target="_blank"
               rel="noopener noreferrer sponsored"
               className="text-accent font-semibold hover:text-accentDeep"
             >
               {book.title}
             </a>
-            {book.author ? <span className="text-ink/60"> — {book.author}</span> : null}
+            {book.author ? (
+              <span className="text-ink/60"> — {book.author}</span>
+            ) : null}
           </li>
         ))}
       </ul>

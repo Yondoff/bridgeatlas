@@ -1,0 +1,25 @@
+{
+  "title": "Lectures recommandées",
+  "subtitle": "Quelques livres utiles pour aller plus loin (calcul, matériaux, conception).",
+  "default": [
+    {
+      "title": "Dimensionnement des structures en béton selon l'Eurocode 2",
+      "author": "Damien Ricotier, Vincent Canet",
+      "url": "https://amzn.to/3ZJ1Mdi"
+    },
+    {
+      "title": "Aide-mémoire - Résistance des matériaux",
+      "author": "Jean-Pierre Boutin, Jean Goulet, Frédéric Lerouge",
+      "url": "https://amzn.to/4c1VkFE"
+    }
+  ],
+  "byType": {
+    "viaduct": [
+      {
+        "title": "Dimensionnement des structures en béton selon l'Eurocode 2",
+        "author": "Damien Ricotier, Vincent Canet",
+        "url": "https://amzn.to/3ZJ1Mdi"
+      }
+    ]
+  }
+}
