@@ -26,25 +26,30 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_NAME,
-    template: `%s — ${SITE_NAME}`,
+    // This is what Google often uses for the blue link when the homepage is shown.
+    // Keep it descriptive; Google may still rewrite, but this strongly influences it.
+    default: "BridgeAtlas — The engineering atlas of the world’s greatest bridges",
+    template: `%s | ${SITE_NAME}`,
   },
   description:
-    "The engineering atlas of the world’s greatest bridges: specs, explanations, and context — built for curious builders.",
+    "The engineering atlas of the world’s greatest bridges. Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.",
   applicationName: SITE_NAME,
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: SITE_NAME,
+    title: "BridgeAtlas — The engineering atlas of the world’s greatest bridges",
     description:
-      "The engineering atlas of the world’s greatest bridges: specs, explanations, and context.",
+      "Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.",
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
+    title: "BridgeAtlas — The engineering atlas of the world’s greatest bridges",
     description:
-      "The engineering atlas of the world’s greatest bridges: specs, explanations, and context.",
+      "Bridge profiles with specs, sources, and real explanations — plus rankings and evergreen lessons.",
   },
 };
 
