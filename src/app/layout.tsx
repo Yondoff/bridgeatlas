@@ -54,6 +54,7 @@ export const metadata: Metadata = {
 };
 
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
@@ -90,6 +91,8 @@ export default function RootLayout({
           <SiteFooter />
           <LanguageToggle />
         </BridgeProvider>
+
+        <Analytics />
       </body>
     </html>
   );
